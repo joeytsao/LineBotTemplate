@@ -49,11 +49,12 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		if event.Type == linebot.EventTypeMessage {
 			switch message := event.Message.(type) {
 			case *linebot.TextMessage:
-				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.Text + "REPLY!")).Do(); err != nil {
+				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.Text + "		(原話回覆)")).Do(); err != nil {
 					log.Print(err) 
 				}
 				switch message.Text {
 					case "buttons":
+					bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.Text + "	(指令確認！)")).Do();
 					imageURL := "http://imgsv.imaging.nikon.com/lineup/lens/zoom/normalzoom/af-s_dx_18-140mmf_35-56g_ed_vr/img/sample/sample1_l.jpg"
 					template := linebot.NewButtonsTemplate(
 						imageURL, "My button sample", "Hello, my button",
