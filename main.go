@@ -52,6 +52,23 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.Text)).Do(); err != nil {
 					log.Print(err) 
 				}
+				switch message.Text {
+					case "buttons":
+					imageURL := "http://imgsv.imaging.nikon.com/lineup/lens/zoom/normalzoom/af-s_dx_18-140mmf_35-56g_ed_vr/img/sample/sample1_l.jpg"
+					template := linebot.NewButtonsTemplate(
+						imageURL, "My button sample", "Hello, my button",
+						linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
+						linebot.NewPostbackTemplateAction("Say hello1", "hello こんにちは", ""),
+						linebot.NewPostbackTemplateAction("言 hello2", "hello こんにちは", "hello こんにちは"),
+						linebot.NewMessageTemplateAction("Say message", "Rice=米"),
+					)
+					if _, err := app.bot.ReplyMessage(
+						replyToken,
+						linebot.NewTemplateMessage("Buttons alt text", template),
+					).Do(); err != nil {
+						return err
+					}
+				}
 			}
 		}
 	}
