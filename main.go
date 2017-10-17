@@ -62,7 +62,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						linebot.NewPostbackTemplateAction("言 hello2", "hello こんにちは", "hello こんにちは"),
 						linebot.NewMessageTemplateAction("Say message", "Rice=米"),
 					)
-					if _, err := bot.ReplyMessage(replyToken,linebot.NewTemplateMessage("Buttons alt text", template)).Do(); err != nil {
+					if _, err := bot.ReplyMessage(event.ReplyToken,linebot.NewTemplateMessage("Buttons alt text", template)).Do(); err != nil {
 						log.Print(err) 
 					}
 				}
