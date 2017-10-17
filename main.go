@@ -55,7 +55,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				switch message.Text {
 					case "buttons":
 						//bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.Text + "	(指令確認！)")).Do();
-						imageURL := "https://example.com/preview.jpg"
+						imageURL := "https://www.rainforestqa.com/images/rainforest-qa-logo.png"
 						template := linebot.NewButtonsTemplate(
 							imageURL, "My button sample", "Hello, my button",
 							linebot.NewURITemplateAction("Go to line.me", "https://line.me"),
