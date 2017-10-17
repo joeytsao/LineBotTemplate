@@ -54,7 +54,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 				//}
 				switch message.Text {
 					case "buttons":
-						bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.Text + "	(指令確認！)")).Do();
+						//bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.Text + "	(指令確認！)")).Do();
 						imageURL := "http://imgsv.imaging.nikon.com/lineup/lens/zoom/normalzoom/af-s_dx_18-140mmf_35-56g_ed_vr/img/sample/sample1_l.jpg"
 						template := linebot.NewButtonsTemplate(
 							imageURL, "My button sample", "Hello, my button",
